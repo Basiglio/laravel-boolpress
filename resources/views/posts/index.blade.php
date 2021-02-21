@@ -16,6 +16,7 @@
                 <td>Autore</td>
                 <td>Post Status</td>
                 <td>Ultimo Commento</td>
+                <td>Ultimo Utente che a Commentato</td>
             </tr>
         </thead>
         <tbody>
@@ -26,7 +27,10 @@
                     <td>{{ $post->subtitle }}</td>
                     <td>{{ $post->author }}</td>
                     <td>{{ $post->info_post->post_status }}</td>
-                    <td>{{ $post->comments['0']->text }}</td>
+                    {{-- ULTIMO COMMENTO --}}
+                    <td>{{ $post->comments['6']->text }}</td>
+                    {{-- ULTIMO COMMENTO UTENTE --}}
+                    <td>{{ $post->comments['6']->author }}</td>
                 </tr>
             @endforeach
         </tbody>

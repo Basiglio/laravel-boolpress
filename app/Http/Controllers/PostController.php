@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 // INCLUDO IL MODEL
 use App\Post;
+use App\Comment;
 
 class PostController extends Controller
 {
@@ -17,6 +18,7 @@ class PostController extends Controller
     {
         // RITORNO ALLA VISTA LA PAGINA
         $posts = Post::all();
+
         return view('posts.index', compact('posts') );
     }
 
