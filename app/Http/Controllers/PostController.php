@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 // INCLUDO IL MODEL
-use APP\Post;
+use App\Post;
 
 class PostController extends Controller
 {
@@ -16,7 +16,8 @@ class PostController extends Controller
     public function index()
     {
         // RITORNO ALLA VISTA LA PAGINA
-        return view('posts.index');
+        $posts = Post::all();
+        return view('posts.index', compact('posts') );
     }
 
     /**
