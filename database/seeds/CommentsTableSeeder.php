@@ -16,11 +16,11 @@ class CommentsTableSeeder extends Seeder
     {
         $posts = Post::all();
 
-
         foreach ($posts as $post) {
-            // per ogni istanza di posts crea una nuova istanza commenti
-            $newComment = new Comment();
+
             for ($i=0; $i < 3; $i++) {
+                // per ogni istanza di posts crea una nuova istanza commenti
+                $newComment = new Comment();
                 // ripeti la creazione per 3 volte
                 $newComment->post_id = $post->id;
                 $newComment->author = $faker->userName;

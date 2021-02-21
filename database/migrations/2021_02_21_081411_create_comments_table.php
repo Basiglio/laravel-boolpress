@@ -19,7 +19,7 @@ class CreateCommentsTable extends Migration
             $table->unsignedBigInteger('post_id');
 
             $table->string('author', 30);
-            $table->text('text');
+            $table->text('text', 7);
 
             //$table->timestamps();
 

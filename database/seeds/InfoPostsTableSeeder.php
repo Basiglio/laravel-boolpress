@@ -23,8 +23,8 @@ class InfoPostsTableSeeder extends Seeder
 
             // la colonna post_id deve avere come valore il numero dell'iterazione passato dal foreach
             $newInfoPost->post_id = $post->id;
-            $newInfoPost->post_status = $faker->randomElement('public','private','draft');
-            $newInfoPost->comment_status = $faker->randomElement('open','close','private');
+            $newInfoPost->post_status = $faker->randomElement(['public','private','draft']);
+            $newInfoPost->comment_status = $faker->randomElement(['open','close','private']);
 
             // SALVO I DATI
             $newInfoPost->save();

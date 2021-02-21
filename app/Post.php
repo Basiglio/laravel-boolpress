@@ -22,7 +22,13 @@ class Post extends Model
         // THIS è LA CLASSE DEFINITA NEL MODEL
         return $this->hasOne('App\InfoPost');
     }
+    public function comments() {
 
-    // DEFINISCO LE RELAZIONI
+        // funzione al quale passo il namespace da associare
+        // THIS è LA CLASSE DEFINITA NEL MODEL
+        return $this->hasMany('App\Comment');
+    }
+
+
 
 }

@@ -9,17 +9,19 @@
 </head>
 <body>
 
-  <header>
-    @yield('header_content')
-  </header>
+  <div class="container">
+        <header>
+            @yield('header_content')
+        </header>
 
-  <main>
-    @yield('main_content')
-  </main>
+        <main>
+            @yield('main_content')
+        </main>
 
-  <footer>
-    @yield('footer_content')
-  </footer>
+        <footer>
+            @yield('footer_content')
+        </footer>
+  </div>
 
 </body>
 </html>
