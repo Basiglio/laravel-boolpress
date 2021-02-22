@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 // INCLUDO IL MODEL
 use App\Post;
+use App\InfoPost;
 use App\Comment;
+
 
 class PostController extends Controller
 {
@@ -55,6 +57,7 @@ class PostController extends Controller
 
         // CREO NUOVO OGGETTO ISTANZA DI CLASSE POST
         $newPost = new Post;
+        $newInfoPost = new InfoPost;
 
         // ASSOCIO I DATI PRESI DAL FORM ALLE CHIAVI DEL DATABASE
 
@@ -62,10 +65,13 @@ class PostController extends Controller
         $newPost->subtitle = $data['subtitle'];
         $newPost->author = $data['author'];
         $newPost->text = $data['text'];
+        $newInfoPost->post_status = $data['post_status'];
+        dd($newInfoPost);
 
         // dd($newPost);
         // SALVO I DATI
         $newPost->save();
+        $newInfoPost->save();
 
         // FACCIO IL REDIRECT ALL'INDEX
         return redirect() -> route('posts.index');

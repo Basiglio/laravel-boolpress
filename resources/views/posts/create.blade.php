@@ -24,10 +24,18 @@
           <input type="text" class="form-control" name="author" id="author" placeholder="Inserisci Titolo Post" value="{{old('author')}}">
         </div>
       </div>
-      <div class="form-group">
-        <label for="text">Scrivi il Post</label>
-        <textarea class="form-control" name="text" id="text" placeholder="Scrivi il tuo Post" rows="5" value="{{old('text')}}"></textarea>
-  </div>
+        <div class="form-group">
+            <label for="text">Scrivi il Post</label>
+            <textarea class="form-control" name="text" id="text" placeholder="Scrivi il tuo Post" rows="5" value="{{old('text')}}"></textarea>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="post_status">Titolo</label>
+          <select name="post_status" id="post_status">
+              <option value="{{old('public')}}">Pubblico</option>
+              <option value="{{old('private')}}">Privato</option>
+              <option value="{{old('draft')}}">Draft</option>
+          </select>
+        </div>
       <button type="submit" class="btn btn-primary">Salva</button>
     </form>
 @endsection
