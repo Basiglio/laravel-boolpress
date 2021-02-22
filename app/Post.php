@@ -28,6 +28,13 @@ class Post extends Model
         // THIS è LA CLASSE DEFINITA NEL MODEL
         return $this->hasMany('App\Comment');
     }
+    public function tags()
+    {
+        // funzione al quale passo il namespace da associare
+        // THIS è LA CLASSE DEFINITA NEL MODEL
+        // tra parentesi il namespace del model principale
+        return $this->belongsToMany('App\Tag');
+    }
 
     public function getLastComment() {
         return $this->comments[count($this->comments)- 1];
