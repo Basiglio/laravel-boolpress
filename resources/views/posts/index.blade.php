@@ -28,9 +28,14 @@
                     <td>{{ $post->author }}</td>
                     <td>{{ $post->info_post->post_status }}</td>
                     {{-- ULTIMO COMMENTO --}}
-                    <td>{{ $post->comments['6']->text }}</td>
+                    <td>{{ $post->getLastComment()->text }}</td>
+                    {{-- ULTIMO AUTORE COMMENTO --}}
+                    <td>{{ $post->getLastComment()->author }}</td>
+                    {{-- <td>{{ $post->comments[count($post->comments) - 1]->text }}</td> --}}
+                    {{-- <td>{{ end($post->comments)->text }}</td> --}}
+                    {{-- <td>{{ $post->comments['6']->text }}</td> --}}
                     {{-- ULTIMO COMMENTO UTENTE --}}
-                    <td>{{ $post->comments['6']->author }}</td>
+                    {{-- <td>{{ $post->comments['6']->author }}</td> --}}
                 </tr>
             @endforeach
         </tbody>

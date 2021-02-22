@@ -29,6 +29,13 @@ class Post extends Model
         return $this->hasMany('App\Comment');
     }
 
+    public function getLastComment() {
+        return $this->comments[count($this->comments)- 1];
+        // $comments = $this->comments;
+        // $len = count($comments);
+        // return $comments[$len - 1];
+    }
+
 
 
 }
