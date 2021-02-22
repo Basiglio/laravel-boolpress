@@ -40,5 +40,8 @@
             @endforeach
         </tbody>
     </table>
+@endsection
 
+@section('footer_content')
+    <a class="btn btn-primary" href="{{ route('posts.create')}}">Aggiungi Post</a>
 @endsection

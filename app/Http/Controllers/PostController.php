@@ -29,7 +29,8 @@ class PostController extends Controller
      */
     public function create()
     {
-        //
+        // RITORNO LA VISTA CREATE
+       return view('posts.create');
     }
 
     /**
@@ -40,7 +41,33 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        // CREO VARIABILE
+        $data = $request->all();
+
+        // DEFINISCO VALIDAZIONE
+
+        $request -> validate([
+            'title' => 'required',
+            'subtitle' => 'required',
+            'author' => 'required',
+            'text' => 'required',
+        ]);
+
+        // CREO NUOVO OGGETTO ISTANZA DI CLASSE POST
+        $newPost = new Post;
+
+        // ASSOCIO I DATI PRESI DAL FORM ALLE CHIAVI DEL DATABASE
+
+        $newPost->title = $data['title'];
+        $newPost->title = $data['subtitle'];
+        $newPost->title = $data['author'];
+        $newPost->title = $data['text'];
+
+        // SALVO I DATI
+        $newPost->save();
+
+        // FACCIO IL REDIRECT ALL'INDEX
+        return redirect() -> route('posts.index');
     }
 
     /**
@@ -49,9 +76,9 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Post $post)
     {
-        //
+        return view('post.show', compact('post'));
     }
 
     /**
