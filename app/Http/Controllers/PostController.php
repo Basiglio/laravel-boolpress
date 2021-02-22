@@ -59,10 +59,11 @@ class PostController extends Controller
         // ASSOCIO I DATI PRESI DAL FORM ALLE CHIAVI DEL DATABASE
 
         $newPost->title = $data['title'];
-        $newPost->title = $data['subtitle'];
-        $newPost->title = $data['author'];
-        $newPost->title = $data['text'];
+        $newPost->subtitle = $data['subtitle'];
+        $newPost->author = $data['author'];
+        $newPost->text = $data['text'];
 
+        // dd($newPost);
         // SALVO I DATI
         $newPost->save();
 

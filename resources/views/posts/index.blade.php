@@ -26,11 +26,11 @@
                     <td>{{ $post->title }}</td>
                     <td>{{ $post->subtitle }}</td>
                     <td>{{ $post->author }}</td>
-                    <td>{{ $post->info_post->post_status }}</td>
+                    {{-- <td>{{ $post->info_post->post_status }}</td> --}}
                     {{-- ULTIMO COMMENTO --}}
-                    <td>{{ $post->getLastComment()->text }}</td>
+                    {{-- <td>{{ $post->getLastComment()->text }}</td> --}}
                     {{-- ULTIMO AUTORE COMMENTO --}}
-                    <td>{{ $post->getLastComment()->author }}</td>
+                    {{-- <td>{{ $post->getLastComment()->author }}</td> --}}
                     {{-- <td>{{ $post->comments[count($post->comments) - 1]->text }}</td> --}}
                     {{-- <td>{{ end($post->comments)->text }}</td> --}}
                     {{-- <td>{{ $post->comments['6']->text }}</td> --}}
