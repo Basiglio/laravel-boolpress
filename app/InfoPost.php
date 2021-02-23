@@ -6,8 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class InfoPost extends Model
 {
+    protected $fillable = [
+        'id',
+        'post_id',
+        'post_status',
+        'comment_status',
+    ];
+
     // dico a laravel di fare la migrazione senza questa colonna
     public $timestamps = false;
+
+
 
 
     // TABELLA SECONDARIA

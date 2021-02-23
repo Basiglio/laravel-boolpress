@@ -20,8 +20,9 @@ class PostController extends Controller
     {
         // RITORNO ALLA VISTA LA PAGINA
         $posts = Post::all();
+        $comments = Comment::all();
 
-        return view('posts.index', compact('posts') );
+        return view('posts.index', compact('posts'), compact('comments') );
     }
 
     /**
@@ -31,8 +32,9 @@ class PostController extends Controller
      */
     public function create()
     {
+        $infoPost = InfoPost::all();
         // RITORNO LA VISTA CREATE
-       return view('posts.create');
+       return view('posts.create', compact('infoPost'));
     }
 
     /**
@@ -45,33 +47,39 @@ class PostController extends Controller
     {
         // CREO VARIABILE
         $data = $request->all();
+        // dd($data);
 
         // DEFINISCO VALIDAZIONE
-
         $request -> validate([
             'title' => 'required',
             'subtitle' => 'required',
             'author' => 'required',
             'text' => 'required',
+            'post_status' => 'required',
         ]);
 
-        // CREO NUOVO OGGETTO ISTANZA DI CLASSE POST
+        // CREO NUOVO OGGETTO ISTANZA DI CLASSE POST e INFO POST
         $newPost = new Post;
         $newInfoPost = new InfoPost;
 
         // ASSOCIO I DATI PRESI DAL FORM ALLE CHIAVI DEL DATABASE
-
         $newPost->title = $data['title'];
         $newPost->subtitle = $data['subtitle'];
         $newPost->author = $data['author'];
         $newPost->text = $data['text'];
+        // SALVO I DATI
+        $newPost->save();
+
+        // IL POST_ID DEVE AVERE L'ID DEL POST
+        $newInfoPost->post_id = $newPost['id'];
         $newInfoPost->post_status = $data['post_status'];
-        dd($newInfoPost);
+        $newInfoPost->comment_status = $data['comment_status'];
+        // dd($newInfoPost);
 
         // dd($newPost);
         // SALVO I DATI
-        $newPost->save();
         $newInfoPost->save();
+
 
         // FACCIO IL REDIRECT ALL'INDEX
         return redirect() -> route('posts.index');

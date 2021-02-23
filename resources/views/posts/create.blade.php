@@ -29,11 +29,19 @@
             <textarea class="form-control" name="text" id="text" placeholder="Scrivi il tuo Post" rows="5" value="{{old('text')}}"></textarea>
         </div>
         <div class="form-group col-md-6">
-          <label for="post_status">Titolo</label>
+          <label for="post_status">Stato del Post</label>
           <select name="post_status" id="post_status">
-              <option value="{{old('public')}}">Pubblico</option>
-              <option value="{{old('private')}}">Privato</option>
-              <option value="{{old('draft')}}">Draft</option>
+              <option value="public">Pubblico</option>
+              <option value="private">Privato</option>
+              <option value="draft">Draft</option>
+          </select>
+        </div>
+        <div class="form-group col-md-6">
+          <label for="comment_status">Stato dei Commenti</label>
+          <select name="comment_status" id="comment_status">
+              <option value="public">Pubblico</option>
+              <option value="private">Privato</option>
+              <option value="draft">Draft</option>
           </select>
         </div>
       <button type="submit" class="btn btn-primary">Salva</button>
