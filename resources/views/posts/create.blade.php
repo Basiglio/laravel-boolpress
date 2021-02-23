@@ -44,8 +44,19 @@
               <option value="draft">Draft</option>
           </select>
         </div>
-      <button type="submit" class="btn btn-primary">Salva</button>
+         @foreach ($tags as $tag)
+            <div class="form-group">
+            <div class="form-check mt-1">
+                <input class="form-check-input" type="checkbox" id="tag- {{ $tag->id }}" name="tags[]" value="{{ $tag->id }}">
+                <label class="form-check-label" for="tag- {{ $tag->id }}">
+                    {{ $tag->name }}
+                </label>
+            </div>
+            </div>
+        @endforeach
+        <button type="submit" class="btn btn-primary">Salva</button>
     </form>
+
 @endsection
 
 @section('footer_content')

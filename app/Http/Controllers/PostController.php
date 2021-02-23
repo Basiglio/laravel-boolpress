@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\InfoPost;
 use App\Comment;
+use App\Tag;
 
 
 class PostController extends Controller
@@ -33,8 +34,9 @@ class PostController extends Controller
     public function create()
     {
         $infoPost = InfoPost::all();
+        $tags = Tag::all();
         // RITORNO LA VISTA CREATE
-       return view('posts.create', compact('infoPost'));
+       return view('posts.create', compact('infoPost'), compact('tags'));
     }
 
     /**
@@ -78,7 +80,16 @@ class PostController extends Controller
 
         // dd($newPost);
         // SALVO I DATI
-        $newInfoPost->save();
+        $infoPostResult = $newInfoPost->save();
+
+        // SE IL SALVATAGGIO è ANDATO A BUON FINE
+        if ($infoPostResult == true) {
+            // SE L'ARRAY DATA CON CHIAVE 'TAGS' NON è VUOTO
+            if (!empty($data['tags'])) {
+                // FAI L'ATTACH
+                $newPost->tags()->attach($data['tags']);
+            }
+        }
 
 
         // FACCIO IL REDIRECT ALL'INDEX
