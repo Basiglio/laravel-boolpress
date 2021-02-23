@@ -1,6 +1,6 @@
 @extends('layout.main')
 
-@dd($posts->comments)
+
 @section('header_content')
 <h1 class='text-center mt-5'>i miei post</h1>
 @endsection
@@ -21,21 +21,25 @@
         <tbody>
             <tr></tr>
             @foreach ($posts as $post)
-
+                {{-- @dd($post->comments) --}}
                 <tr>
                     <td>{{ $post->title }}</td>
                     <td>{{ $post->subtitle }}</td>
                     <td>{{ $post->author }}</td>
                     <td>{{ $post->info_post->post_status }}</td>
                     {{-- ULTIMO COMMENTO --}}
-
-                    {{-- @if (empty($post->comments) == true)
-                        <td>Nessun commento </td>
+                    {{-- @dump(empty($post->commets)) --}}
+                    @if ($post->comments->isEmpty() == true)
+                         <td>Nessun commento</td>
                     @else
-
-                    @endif --}}
-                    <td>{{ $post->getLastComment()->text }}</td>
+                        <td>{{ $post->getLastComment()->text}}</td>
+                    @endif
                     {{-- ULTIMO AUTORE COMMENTO --}}
+                    @if ($post->comments->isEmpty() == true)
+                         <td>Nessun commento</td>
+                    @else
+                        <td>{{ $post->getLastComment()->author}}</td>
+                    @endif
                     {{-- <td>{{ $post->getLastComment()->author }}</td> --}}
                     {{-- <td>{{ $post->comments[count($post->comments) - 1]->text }}</td> --}}
                     {{-- <td>{{ end($post->comments)->text }}</td> --}}

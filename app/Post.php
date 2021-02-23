@@ -37,6 +37,17 @@ class Post extends Model
     }
 
     public function getLastComment() {
+        // dump(count($this->comments));
+        // dump(count($this->comments) - 1);
+
+        // if ($this->comments->isEmpty() == true) {
+        //    dump("sono entrato");
+        // } else {
+        //     dump($this->comments);
+        // }
+        // dump($this->comments->isEmpty());
+        // if (!$mentor->isEmpty()) {
+        // }
         return $this->comments[count($this->comments)- 1];
         // $comments = $this->comments;
         // $len = count($comments);
