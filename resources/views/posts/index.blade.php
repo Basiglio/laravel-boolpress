@@ -23,7 +23,7 @@
             @foreach ($posts as $post)
                 {{-- @dd($post->comments) --}}
                 <tr>
-                    <td>{{ $post->title }}</td>
+                    <td><a href="{{route('posts.show', $post->id)}}">{{ $post->title }}</a></td>
                     <td>{{ $post->subtitle }}</td>
                     <td>{{ $post->author }}</td>
                     <td>{{ $post->info_post->post_status }}</td>
@@ -40,6 +40,10 @@
                     @else
                         <td>{{ $post->getLastComment()->author}}</td>
                     @endif
+                    <td>
+                        <a href="{{ route('posts.edit', $post->id)}}"><i class="far fa-edit"></i></a>
+                    </td>
+
                     {{-- <td>{{ $post->getLastComment()->author }}</td> --}}
                     {{-- <td>{{ $post->comments[count($post->comments) - 1]->text }}</td> --}}
                     {{-- <td>{{ end($post->comments)->text }}</td> --}}

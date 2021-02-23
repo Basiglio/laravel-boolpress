@@ -104,7 +104,10 @@ class PostController extends Controller
      */
     public function show(Post $post)
     {
-        return view('post.show', compact('post'));
+        // RITORNO ALLA VISTA LA SINGOLA ISTANZA DI CLASSE
+        // CI PENSA LA MAGIA DI LARAVEL
+        $postAttributes = $post->getAttributes();
+        return view('posts.show', compact('postAttributes'), compact('post'));
     }
 
     /**
@@ -113,9 +116,12 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Post $post)
     {
-        //
+        $infoPost = InfoPost::all();
+        $tags = Tag::all();
+        // RITORNO LA VISTA CREATE
+        return view('posts.edit', compact('tags'), compact('post'));
     }
 
     /**
@@ -125,9 +131,20 @@ class PostController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Post $post)
     {
-        //
+        $request->validate([
+            'title' => 'required',
+            'subtitle' => 'required',
+            'author' => 'required',
+            'text' => 'required',
+            'post_status' => 'required',
+        ]);
+
+        $data = $request->all();
+        $post->update($data);
+
+        return redirect() -> route('posts.show', $post);
     }
 
     /**
