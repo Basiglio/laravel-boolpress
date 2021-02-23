@@ -43,6 +43,13 @@
                     <td>
                         <a href="{{ route('posts.edit', $post->id)}}"><i class="far fa-edit"></i></a>
                     </td>
+                    <td>
+                        <form action="{{route('posts.destroy', $post)}}" method="POST">
+                        @csrf
+                        @method('DELETE')
+                        <button onclick='return confirm("Sei sicuro di voler cancellare l&apos;elemento?")' type="submit" class="btn btn-warning"><i class="fas fa-trash-alt"></i></button>
+                        </form>
+                    </td>
 
                     {{-- <td>{{ $post->getLastComment()->author }}</td> --}}
                     {{-- <td>{{ $post->comments[count($post->comments) - 1]->text }}</td> --}}
